@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:stock_management/CustomersPage.dart';
+import 'package:stock_management/providers/CustomersProvider.dart';
 
 void main() {
-  runApp(const MyApp());
+  /*runApp(const MyApp());*/
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => CustomerProvider(),),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,7 +44,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Colors.deepPurple[400],
         ),
-        body: Container());
+        body: Container(
+          child: CustomersPage(),
+        ));
   }
 }
