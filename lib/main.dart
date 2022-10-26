@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stock_management/CustomersPage.dart';
+import 'package:stock_management/providers/CustomersProvider.dart';
 import 'package:stock_management/provider/devicesProvider.dart';
 import 'package:stock_management/screen/productPage/ProductPage.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-    create: (context) => DevicesProvider(),
+  /*runApp(const MyApp());*/
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => CustomerProvider(),),
+      ChangeNotifierProvider(create: (context) => DevicesProvider(),)
+    ],
     child: const MyApp(),
   ));
-  // runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -40,8 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOptions = <Widget>[
     ProductPage(),
-    // ElevatedButton(onPressed: getDevices, child: Text("click")),
-    Text('Index 1: Business'),
+    CustomersPage(),
   ];
 
   void _onItemTapped(int index) {
