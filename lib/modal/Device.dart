@@ -18,7 +18,7 @@ class Device {
       : id = json['id'],
         name = json['name'],
         serialNumber = json['serial_number'],
-        price = json['price'],
+        price = json['price'].toDouble(),
         stockQuantity = json['stock_quantity'],
         picture = json['picture'];
 

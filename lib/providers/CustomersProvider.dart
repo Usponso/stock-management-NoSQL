@@ -7,6 +7,7 @@ class CustomerProvider extends ChangeNotifier {
 String customerName = "";
 String customerSiret = "";
 String customerPhoneNumber = "";
+String URL = "http://10.0.2.2:5000";
 
   void setData(dataType, value) {
     switch(dataType) {
@@ -25,10 +26,6 @@ String customerPhoneNumber = "";
       }
       break;
     }
-    print({
-      "name : $customerName, siret : $customerSiret, phone : $customerPhoneNumber"
-    });
-
   }
 
   void resetData() {
@@ -39,13 +36,10 @@ String customerPhoneNumber = "";
 
   Future<void> addCustomer() async {
     try {
-      await Dio().post('http://10.0.2.2:5000/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
+      await Dio().post('$URL/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
     } catch(e) {
       print(e);
     }
-
   }
-
-
 }
 

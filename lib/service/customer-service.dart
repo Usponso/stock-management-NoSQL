@@ -11,8 +11,6 @@ Future<List<Customer>> getCustomers() async {
     List<Customer> customersList =[];
     /*List<Customer> customersList = response.data.map((customer) => Customer.fromJson(customer)).toList() as List<Customer>;*/
     response.data.forEach((customer) => customersList.add(Customer.fromJson(customer)));
-    print(customersList);
-
 
     return customersList;
   } catch (e) {

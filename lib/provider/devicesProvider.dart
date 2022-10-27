@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import '../modal/Device.dart';
 
 class DevicesProvider extends ChangeNotifier {
-  String URL = 'http://localhost:5000';
-  final List<Device> _devices = [];
+  String URL = 'http://10.0.2.2:5000';
+  List<Device> _devices = [];
 
   UnmodifiableListView<Device> get devices => UnmodifiableListView(_devices);
 
@@ -42,11 +42,7 @@ class DevicesProvider extends ChangeNotifier {
   Future<void> getDevices() async {
     if (_devices.isNotEmpty) return;
     var response = await Dio().get('$URL/devices');
-    var devices =
-        List<Device>.from(response.data.map((value) => Device.fromJson(value)));
-
-    devices.forEach((_device) {
-      addDevice(_device);
-    });
+    _devices = List<Device>.from(response.data.map((value) => Device.fromJson(value)));
+    notifyListeners();
   }
 }
