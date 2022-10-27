@@ -27,10 +27,8 @@ class ProductPage extends StatelessWidget {
         future: getDevices(context),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
-            print("has data");
             return Consumer<DevicesProvider>(
               builder: (context, provider, child) {
-                print(provider.devices.length);
                 return ListView.builder(
                   itemCount: provider.devices.length,
                   itemBuilder: (BuildContext context, int index) {

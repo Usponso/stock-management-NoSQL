@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stock_management/screen/customerPage/CustomerDetailsPage.dart';
 import '../../modal/Customer.dart';
 import '../../service/customer-service.dart' as CustomerService;
 
@@ -31,6 +32,15 @@ class _CustomersListState extends State<CustomersList> {
                         elevation: 0,
                         margin: EdgeInsets.all(5),
                         child: ListTile(
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CustomerDetailsPage(
+                                        id: customer.id,
+                                        companyName: customer.companyName,
+                                        phoneNumber: customer.phoneNumber,
+                                        siret: customer.siret,
+                                      ))),
                           title: Text(customer.companyName),
                           leading: Icon(
                             Icons.person_outline_outlined,
