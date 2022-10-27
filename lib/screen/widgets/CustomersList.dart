@@ -16,7 +16,7 @@ class _CustomersListState extends State<CustomersList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 500,
+        height: 530,
         child: FutureBuilder<List<Customer>>(
             future: customersList,
             builder:
