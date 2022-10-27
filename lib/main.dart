@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_management/CustomersPage.dart';
 import 'package:stock_management/providers/CustomersProvider.dart';
-import 'package:stock_management/provider/devicesProvider.dart';
+import 'package:stock_management/providers/devicesProvider.dart';
 import 'package:stock_management/screen/productPage/ProductPage.dart';
+import 'package:stock_management/screen/widgets/DetailedBill.dart';
 
 void main() {
   /*runApp(const MyApp());*/

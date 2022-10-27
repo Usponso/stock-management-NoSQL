@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:stock_management/provider/devicesProvider.dart';
+import 'package:stock_management/providers/devicesProvider.dart';
 
 class CustomDialog extends StatelessWidget {
   CustomDialog(

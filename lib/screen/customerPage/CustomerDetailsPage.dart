@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stock_management/modal/CustomerBill.dart';
 import '../../service/customer-service.dart' as CustomerService;
+import '../widgets/DetailedBill.dart';
 
 class CustomerDetailsPage extends StatelessWidget {
   const CustomerDetailsPage(
@@ -63,6 +64,8 @@ class CustomerDetailsPage extends StatelessWidget {
                       itemCount: snapshot.data?.length,
                       itemBuilder: (context, index) {
                         CustomerBill bill = snapshot.data![index];
+                        String formattedDate = DateFormat('dd/MM/yyyy')
+                            .format(DateTime.parse(bill.date));
                         return Card(
                           elevation: 0,
                           shape: RoundedRectangleBorder(
@@ -71,15 +74,16 @@ class CustomerDetailsPage extends StatelessWidget {
                                 color: Colors.grey.shade500, width: 1),
                           ),
                           child: ListTile(
-                            onTap: ()=>{},
+                            onTap: ()=>{
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedBill(id: id, idBill: bill.id, companyName: companyName, siret: siret, phoneNumber: phoneNumber, billDate: formattedDate)))
+                            },
                             leading: Icon(Icons.shopping_cart,
                                 color: Colors.deepPurple[400]),
                             title: Text(
                               'Commande #${bill.id}',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            subtitle: Text(DateFormat('dd/MM/yyyy')
-                                .format(DateTime.parse(bill.date))),
+                            subtitle: Text(formattedDate),
                             trailing: Text(
                               '${bill.total} €',
                               style: TextStyle(fontWeight: FontWeight.bold),
