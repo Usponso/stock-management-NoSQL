@@ -139,7 +139,6 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
                                 onPressed: () {
                                   Provider.of<CustomerProvider>(context, listen:false).addCustomer();
                                   Navigator.pop(context);
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => CustomersPage()));
                                 },
                               ),
                             )
@@ -155,3 +154,5 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     );
   }
 }
+
+
