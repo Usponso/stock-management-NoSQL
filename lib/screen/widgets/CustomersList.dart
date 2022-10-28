@@ -23,7 +23,7 @@ class _CustomersListState extends State<CustomersList> {
                 (BuildContext context, AsyncSnapshot<List<Customer>> snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.only(left: 20, right: 20),
                   itemCount: snapshot.data?.length,
                   itemBuilder: (context, index) {
                     Customer customer = snapshot.data![index];

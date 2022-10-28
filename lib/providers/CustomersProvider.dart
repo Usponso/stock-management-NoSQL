@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:stock_management/constants.dart';
 import '../modal/Customer.dart';
 import '../service/customer-service.dart' as CustomerService;
 
@@ -7,7 +8,6 @@ class CustomerProvider extends ChangeNotifier {
 String customerName = "";
 String customerSiret = "";
 String customerPhoneNumber = "";
-String URL = "http://10.0.2.2:5000";
 
   void setData(dataType, value) {
     switch(dataType) {
@@ -36,7 +36,7 @@ String URL = "http://10.0.2.2:5000";
 
   Future<void> addCustomer() async {
     try {
-      await Dio().post('$URL/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
+      await Dio().post('$API_URL/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
     } catch(e) {
       print(e);
     }

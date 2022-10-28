@@ -1,12 +1,13 @@
 import 'dart:collection';
 import 'dart:io';
-import 'dart:math';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:stock_management/constants.dart';
 import '../modal/Device.dart';
+import 'dart:core';
 
 class DevicesProvider extends ChangeNotifier {
-  String URL = 'http://10.0.2.2:5000';
+  String barcodeScanned = '';
   List<Device> _devices = [];
 
   UnmodifiableListView<Device> get devices => UnmodifiableListView(_devices);
@@ -14,18 +15,18 @@ class DevicesProvider extends ChangeNotifier {
   void postDevice(String name, String serialNumber, String price,
       String stockQuantity) async {
     Device device = Device(
-        id: new Random().nextInt(999),
         name: name,
         serialNumber: serialNumber,
         price: double.parse(price),
         stockQuantity: int.parse(stockQuantity));
 
-    await Dio().post('$URL/devices',
+    var id = await Dio().post('$API_URL/devices',
         options: Options(headers: {
           HttpHeaders.contentTypeHeader: "application/json",
         }),
         data: device.toJson());
 
+    device.id = int.parse(id.data.toString());
     addDevice(device);
   }
 
@@ -39,10 +40,22 @@ class DevicesProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> getDevices() async {
-    if (_devices.isNotEmpty) return;
-    var response = await Dio().get('$URL/devices');
-    _devices = List<Device>.from(response.data.map((value) => Device.fromJson(value)));
+  Future<void> refresh() async {
+    getDevices(true);
+  }
+
+  Future<void> getDevices(bool refresh) async {
+    if (_devices.isNotEmpty && !refresh) return;
+    var response = await Dio().get('$API_URL/devices');
+    _devices =
+        List<Device>.from(response.data.map((value) => Device.fromJson(value)));
     notifyListeners();
+  }
+
+  Future<List<Device>> getDeviceByScan(String scannedId) async {
+    int id = int.parse(scannedId.substring(3));
+    var response = await Dio().get('$API_URL/devices/$id');
+    List<Device> device = List<Device>.from(response.data.map((device) => Device.fromJson(device)));
+    return device;
   }
 }
