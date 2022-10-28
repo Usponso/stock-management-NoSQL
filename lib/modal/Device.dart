@@ -1,18 +1,17 @@
 class Device {
-  final int id;
+  int id;
   final String name, serialNumber;
   final double price;
   final int stockQuantity;
   String picture;
 
   Device(
-      {required this.id,
+      {
       required this.name,
       required this.serialNumber,
       required this.price,
       required this.stockQuantity,
-      this.picture =
-          'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png'});
+      this.picture ='https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png', this.id = 0});
 
   Device.fromJson(Map<String, dynamic> json)
       : id = json['id'],

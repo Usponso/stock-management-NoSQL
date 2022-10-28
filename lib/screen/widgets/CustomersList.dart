@@ -30,7 +30,7 @@ class _CustomersListState extends State<CustomersList> {
                 return Consumer<CustomerProvider>(
                   builder: (BuildContext context, provider, Widget? child) {
                     return ListView.builder(
-                      padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.only(left: 20, right: 20),
                       itemCount: provider.customers.length,
                       itemBuilder: (BuildContext context, int index) {
                         Customer customer = provider.customers![index];

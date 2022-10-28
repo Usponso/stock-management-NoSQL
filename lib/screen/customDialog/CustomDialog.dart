@@ -17,10 +17,15 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: Colors.deepPurple[50],
       icon: Icon(Icons.devices, color: Colors.deepPurple[400]),
       insetPadding: EdgeInsets.all(20),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      title: Center(child: Text("Ajouter un produit", style: TextStyle(fontWeight: FontWeight.bold),)),
+      title: const Center(
+          child: Text(
+        "Ajouter un produit",
+        style: TextStyle(fontWeight: FontWeight.bold),
+      )),
       content: Container(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -90,26 +95,22 @@ class CustomDialog extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
-          child:
-              Text("Annuler", style: TextStyle(color: Colors.deepPurple[400], fontWeight: FontWeight.bold)),
+          child: Text("Annuler",
+              style: TextStyle(
+                  color: Colors.deepPurple[400], fontWeight: FontWeight.bold)),
         ),
         TextButton(
             onPressed: () {
               Provider.of<DevicesProvider>(context, listen: false)
                   .postDevice(name, serialNumber, price, stockQuantity);
+              Navigator.pop(context);
             },
             child: Text(
               "Ajouter",
-              style: TextStyle(color: Colors.deepPurple[400], fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.deepPurple[400], fontWeight: FontWeight.bold),
             )),
       ],
     );
-  }
-
-  bool isNumeric(String s) {
-    if (s == null) {
-      return false;
-    }
-    return double.parse(s) != null;
   }
 }
