@@ -1,8 +1,8 @@
+import 'dart:collection';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:stock_management/constants.dart';
 import '../modal/Customer.dart';
-import '../service/customer-service.dart' as CustomerService;
 
 class CustomerProvider extends ChangeNotifier {
 String customerName = "";
@@ -35,11 +35,32 @@ String customerPhoneNumber = "";
   }
 
   Future<void> addCustomer() async {
+    Customer customer = Customer(companyName: customerName, siret: customerSiret, phoneNumber: customerPhoneNumber);
     try {
-      await Dio().post('$API_URL/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
+      await Dio().post('$API_URL/customers', data: customer);
+      _customers.add(customer);
+      notifyListeners();
     } catch(e) {
       print(e);
     }
   }
+
+List<Customer> _customers = [];
+
+UnmodifiableListView<Customer> get customers => UnmodifiableListView(_customers);
+
+Future<List<Customer>> getCustomers() async {
+  try {
+    var response = await Dio().get('$API_URL/customers');
+    /*List<Customer> customersList =[];*/
+    /*List<Customer> customersList = response.data.map((customer) => Customer.fromJson(customer)).toList() as List<Customer>;*/
+    response.data.forEach((customer) => _customers.add(Customer.fromJson(customer)));
+    notifyListeners();
+    return _customers;
+  } catch (e) {
+    print(e);
+    return [];
+  }
+}
 }
 

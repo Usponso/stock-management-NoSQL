@@ -4,7 +4,7 @@ class Customer {
   final String siret;
   final String phoneNumber;
 
-  Customer({required this.id, required this.companyName, required this.siret, required this.phoneNumber});
+  Customer({this.id = 0,required this.companyName, required this.siret, required this.phoneNumber});
 
   Customer.fromJson(Map<String, dynamic> json)
       :

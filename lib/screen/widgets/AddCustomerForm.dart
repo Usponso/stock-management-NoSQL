@@ -102,8 +102,6 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
               Provider.of<CustomerProvider>(context, listen: false)
                   .addCustomer();
               Navigator.pop(context);
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => MyHomePage(title: "Gestion de stock")));
             },
             child: Text(
               "Ajouter",
@@ -114,3 +112,5 @@ class _AddCustomerFormState extends State<AddCustomerForm> {
     );
   }
 }
+
+
