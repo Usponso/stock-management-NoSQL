@@ -75,7 +75,7 @@ class CustomerDetailsPage extends StatelessWidget {
                           ),
                           child: ListTile(
                             onTap: ()=>{
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedBill(id: id, idBill: bill.id, companyName: companyName, siret: siret, phoneNumber: phoneNumber, billDate: formattedDate)))
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedBill(id: id, idBill: bill.id, companyName: companyName, siret: siret, phoneNumber: phoneNumber, billDate: formattedDate, totalBill: bill.total)))
                             },
                             leading: Icon(Icons.shopping_cart,
                                 color: Colors.deepPurple[400]),

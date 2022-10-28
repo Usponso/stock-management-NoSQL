@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:stock_management/modal/CustomerBill.dart';
+import 'package:stock_management/modal/CustomerTransaction.dart';
 
 import '../modal/Customer.dart';
 
@@ -32,3 +33,23 @@ Future<List<CustomerBill>> getBillsByCustomer(int customerId) async{
     return [];
   }
 }
+
+Future<List<CustomerTransaction>> getAllTransactionsByBillAndCustomer(int customerId, int billId) async {
+  print(customerId);
+  try {
+    var response = await Dio().get('$URL/customers/$customerId/bills/$billId/transactions');
+    List<CustomerTransaction> transactionsList =[];
+    /*List<Customer> customersList = response.data.map((customer) => Customer.fromJson(customer)).toList() as List<Customer>;*/
+    response.data.forEach((transaction) => transactionsList.add(CustomerTransaction.fromJson(transaction)));
+
+    return transactionsList;
+  } catch (e) {
+    print(e);
+    return [];
+  }
+}
+
+
+
+
+

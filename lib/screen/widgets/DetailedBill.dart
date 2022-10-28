@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:stock_management/screen/widgets/Cards/AllTransactionsCard.dart';
+import 'package:stock_management/screen/widgets/Cards/BillNumberAndDateCard.dart';
+import 'Cards/CompanyCard.dart';
 
 class DetailedBill extends StatefulWidget {
-  const DetailedBill({Key? key, required this.id, required this.idBill, required this.companyName, required this.siret, required this.phoneNumber, required this.billDate}) : super(key: key);
+  const DetailedBill(
+      {Key? key,
+      required this.id,
+      required this.idBill,
+      required this.companyName,
+      required this.siret,
+      required this.phoneNumber,
+      required this.billDate,
+      required this.totalBill})
+      : super(key: key);
   final int id, idBill;
+  final double totalBill;
   final String companyName, siret, phoneNumber, billDate;
-
 
   @override
   State<DetailedBill> createState() => _DetailedBillState();
 }
 
 class _DetailedBillState extends State<DetailedBill> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,124 +35,36 @@ class _DetailedBillState extends State<DetailedBill> {
           ),
         ),
         body: Padding(
-      padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Card(
-              color: Colors.grey[100],
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-                side: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-              margin: EdgeInsets.all(5),
-              child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: ListTile(
-                    title: Text(
-                      "${widget.companyName}",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                    subtitle: Text(
-                      "SIRET : ${widget.siret}  \nTéléphone : ${widget.phoneNumber}",
-                      style: TextStyle(fontSize: 16),
-                    ),
-                    leading: Icon(
-                      Icons.person_outline_outlined,
-                      size: 30,
-                      color: Colors.black,
-                    ),
-                  ))),
-          Card(
-              color: Colors.grey[100],
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-                side: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-              margin: EdgeInsets.all(5),
-              child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: ListTile(
-                    title: Text(
-                      "Numéro de facture: ${widget.idBill} \nDate: ${widget.billDate}",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                  ))),
-          Container(
-            child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Column(
-                  children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text("Produit"),
-                        Text("Quantité"),
-                        Text("Prix"),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                  height: 300,
-                                  width: 320,
-                                  child: ListView.builder(
-                                      itemCount: 5,
-                                      itemBuilder: (context, index) {
-                                        return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                            children: [
-                                          Text("Name"),
-                                          Text(""),
-                                          Text("2"),
-                                          Text("50"),
-                                        ]
-                                      );
-                                      }
-                                  ),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children : [
-                                  Text("Total : 5000 €", textAlign: TextAlign.right,)
-                                ]
-                              )
-                            ])
-                      ],
-                    )
-
-                  ],
-                )),
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              CompanyCard(
+                  companyName: widget.companyName,
+                  siret: widget.siret,
+                  phoneNumber: widget.phoneNumber),
+              BillNumberAndDateCard(
+                  billDate: widget.billDate, idBill: widget.idBill),
+              AllTransactionsCard(
+                  idCustomer: widget.id,
+                  idBill: widget.idBill,
+                  totalBill: widget.totalBill),
+              Container(
+                  margin: EdgeInsets.only(top: 20),
+                  width: 300,
+                  child: ElevatedButton.icon(
+                      icon: Icon(Icons.download),
+                      label: Text("Télécharger"),
+                      onPressed: () {},
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.deepPurple[400]),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0))),
+                      )))
+            ],
           ),
-          /*Card(
-              color: Colors.grey[100],
-              elevation: 0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5),
-                side: BorderSide(
-                  color: Colors.grey,
-                ),
-              ),
-              margin: EdgeInsets.all(5),
-              child: Padding(
-                  padding: EdgeInsets.all(15),
-                  child: ListTile(
-                    title: Text(
-                      "Numéro de facture: \nDate:",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                  ))),*/
-        ],
-      ),
-    ));
+        ));
   }
 }
