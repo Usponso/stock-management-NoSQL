@@ -11,7 +11,6 @@ class CustomersList extends StatefulWidget {
   Future<List<Customer>> getCustomers(BuildContext context) async {
     return await Provider.of<CustomerProvider>(context, listen: false)
         .getCustomers();
-    /*return true;*/
   }
 
   @override
@@ -19,8 +18,7 @@ class CustomersList extends StatefulWidget {
 }
 
 class _CustomersListState extends State<CustomersList> {
-  /*final Future<List<Customer>> customersList = CustomerService.getCustomers();*/
-
+ 
   @override
   Widget build(BuildContext context) {
     return Container(
