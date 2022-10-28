@@ -50,7 +50,7 @@ class CustomerDetailsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Divider(color: Colors.red,),
+            child: Divider(color: Colors.grey,),
           ),
           FutureBuilder<List<CustomerBill>>(
               future: bills,
