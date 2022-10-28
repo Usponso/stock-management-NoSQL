@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../modal/Customer.dart';
@@ -35,11 +37,33 @@ String URL = "http://10.0.2.2:5000";
   }
 
   Future<void> addCustomer() async {
+    Customer customer = Customer(companyName: customerName, siret: customerSiret, phoneNumber: customerPhoneNumber);
     try {
-      await Dio().post('$URL/customers', data: {'company_name': customerName, 'siret': customerSiret, 'phone_number' : customerPhoneNumber});
+      await Dio().post('$URL/customers', data: customer);
+      _customers.add(customer);
+      notifyListeners();
     } catch(e) {
       print(e);
     }
+
   }
+
+List<Customer> _customers = [];
+
+UnmodifiableListView<Customer> get customers => UnmodifiableListView(_customers);
+
+Future<List<Customer>> getCustomers() async {
+  try {
+    var response = await Dio().get('$URL/customers');
+    /*List<Customer> customersList =[];*/
+    /*List<Customer> customersList = response.data.map((customer) => Customer.fromJson(customer)).toList() as List<Customer>;*/
+    response.data.forEach((customer) => _customers.add(Customer.fromJson(customer)));
+    notifyListeners();
+    return _customers;
+  } catch (e) {
+    print(e);
+    return [];
+  }
+}
 }
 

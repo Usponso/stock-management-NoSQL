@@ -50,7 +50,7 @@ class CustomerDetailsPage extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 10, right: 10),
-            child: Divider(),
+            child: Divider(color: Colors.red,),
           ),
           FutureBuilder<List<CustomerBill>>(
               future: bills,
@@ -75,7 +75,7 @@ class CustomerDetailsPage extends StatelessWidget {
                           ),
                           child: ListTile(
                             onTap: ()=>{
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedBill(id: id, idBill: bill.id, companyName: companyName, siret: siret, phoneNumber: phoneNumber, billDate: formattedDate)))
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DetailedBill(id: id, idBill: bill.id, companyName: companyName, siret: siret, phoneNumber: phoneNumber, billDate: formattedDate, totalBill: bill.total)))
                             },
                             leading: Icon(Icons.shopping_cart,
                                 color: Colors.deepPurple[400]),
