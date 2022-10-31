@@ -6,7 +6,7 @@ import 'package:stock_management/screen/widgets/CustomersList.dart';
 import 'package:stock_management/screen/widgets/SearchInput.dart';
 import 'package:stock_management/service/customer-service.dart';
 
-import 'modal/Customer.dart';
+import '../../modal/Customer.dart';
 
 class CustomersPage extends StatefulWidget {
   const CustomersPage({Key? key}) : super(key: key);
