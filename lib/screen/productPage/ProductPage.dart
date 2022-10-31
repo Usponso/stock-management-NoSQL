@@ -42,6 +42,8 @@ class ProductPage extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: ExpandableFab(
+
+        //MODIFIER SHAPE BOUTON OUVERTURE
         backgroundColor: Colors.deepPurple[400],
         closeButtonStyle: ExpandableFabCloseButtonStyle(
             backgroundColor: Colors.red),
