@@ -8,6 +8,7 @@ import '../../service/customer-service.dart' as CustomerService;
 class CustomersList extends StatefulWidget {
   const CustomersList({Key? key}) : super(key: key);
 
+
   Future<List<Customer>> getCustomers(BuildContext context) async {
     return await Provider.of<CustomerProvider>(context, listen: false)
         .getCustomers();
@@ -18,7 +19,7 @@ class CustomersList extends StatefulWidget {
 }
 
 class _CustomersListState extends State<CustomersList> {
- 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -31,9 +32,9 @@ class _CustomersListState extends State<CustomersList> {
                   builder: (BuildContext context, provider, Widget? child) {
                     return ListView.builder(
                     padding: EdgeInsets.only(left: 20, right: 20),
-                      itemCount: provider.customers.length,
+                      itemCount: provider.getListFoundedCustomers().length,
                       itemBuilder: (BuildContext context, int index) {
-                        Customer customer = provider.customers![index];
+                        Customer customer = provider.getListFoundedCustomers()![index];
                         return Card(
                             color: Colors.grey[100],
                             elevation: 0,
@@ -59,7 +60,9 @@ class _CustomersListState extends State<CustomersList> {
                   },
                 );
               } else {
-                return Text("Loading");
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
               }
             }));
   }
