@@ -23,7 +23,7 @@ class _CustomersListState extends State<CustomersList> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 530,
+        height: MediaQuery.of(context).size.height * 0.60,
         child: FutureBuilder<List<Customer>>(
             future: widget.getCustomers(context),
             builder: (BuildContext context, AsyncSnapshot<List<Customer>> snapshot) {

@@ -67,6 +67,7 @@ class CustomerProvider extends ChangeNotifier {
         response.data
             .forEach((customer) => _customers.add(Customer.fromJson(customer)));
       notifyListeners();
+      print(_customers.length);
 
       return _customers;
     } catch (e) {
