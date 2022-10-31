@@ -108,7 +108,9 @@ class _AllTransactionsCardState extends State<AllTransactionsCard> {
                                                   ]));
                                         });
                                   } else {
-                                    return CircularProgressIndicator();
+                                    return const Center(
+                                      child: CircularProgressIndicator(),
+                                    );
                                   }
                                 }),
                           ),
