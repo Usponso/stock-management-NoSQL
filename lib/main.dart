@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stock_management/screen/TestPageNoSQL.dart';
 import 'package:stock_management/screen/customerPage/CustomersPage.dart';
 import 'package:stock_management/providers/CustomersProvider.dart';
 import 'package:stock_management/providers/SearchCustomersProvider.dart';
@@ -49,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     ProductPage(),
     CustomersPage(),
+    TestPageNoSQL(),
   ];
 
   void _onItemTapped(int index) {
@@ -76,6 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.phone),
             label: "Répertoire",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bug_report),
+            label: "Test NoSQL",
           ),
         ],
         currentIndex: _selectedIndex,
