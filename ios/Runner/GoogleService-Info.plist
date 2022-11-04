@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>565810147868-9ge928osn47c20odl2jt44cvvgi3k1sh.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.565810147868-9ge928osn47c20odl2jt44cvvgi3k1sh</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAGlrNmsViEEqNTdN2hqOUPefqAk6I9A7g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>565810147868</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.stockManagement</string>
+	<key>PROJECT_ID</key>
+	<string>foreach-nosql</string>
+	<key>STORAGE_BUCKET</key>
+	<string>foreach-nosql.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:565810147868:ios:d7553e6354e8f9cd0965d9</string>
+	<key>DATABASE_URL</key>
+	<string>https://foreach-nosql-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

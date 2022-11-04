@@ -1,5 +1,5 @@
 class Customer {
-  final int id;
+  final int? id;
   final String companyName;
   final String siret;
   final String phoneNumber;

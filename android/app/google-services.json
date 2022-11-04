@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "565810147868",
+    "firebase_url": "https://foreach-nosql-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "foreach-nosql",
+    "storage_bucket": "foreach-nosql.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565810147868:android:785bccca45e7c3820965d9",
+        "android_client_info": {
+          "package_name": "com.example.stock_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565810147868-qb1unkk1dk70dq8qkhora070g3aoo9ld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA8wheu7m2ydRVDuGblXg18hI2l-MgIDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565810147868-qb1unkk1dk70dq8qkhora070g3aoo9ld.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:565810147868:android:a4aa8c93952d34240965d9",
+        "android_client_info": {
+          "package_name": "com.example.tool_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "565810147868-qb1unkk1dk70dq8qkhora070g3aoo9ld.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDA8wheu7m2ydRVDuGblXg18hI2l-MgIDA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "565810147868-qb1unkk1dk70dq8qkhora070g3aoo9ld.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

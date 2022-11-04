@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:stock_management/screen/TestPageNoSQL.dart';
@@ -8,8 +9,12 @@ import 'package:stock_management/providers/devicesProvider.dart';
 import 'package:stock_management/screen/productPage/ProductPage.dart';
 import 'package:stock_management/screen/widgets/DetailedBill.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
   /*runApp(const MyApp());*/
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => CustomerProvider(),),

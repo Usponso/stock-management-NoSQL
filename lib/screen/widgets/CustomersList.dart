@@ -44,7 +44,7 @@ class _CustomersListState extends State<CustomersList> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => CustomerDetailsPage(
-                                            id: customer.id,
+                                            id: customer.id!,
                                             companyName: customer.companyName,
                                             phoneNumber: customer.phoneNumber,
                                             siret: customer.siret,
